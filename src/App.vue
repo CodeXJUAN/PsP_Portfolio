@@ -4,10 +4,14 @@ import { RouterView } from 'vue-router'
 
 <template>
   <header></header>
-  <main>
-    <div class="psp-screen">
-      <RouterView />
+  <main class="psp">
+    <div class="psp-left"></div>
+    <div class="psp-centre">
+      <div class="psp-screen">
+        <RouterView />
+      </div>
     </div>
+    <div class="psp-right"></div>
   </main>
   <footer>
     <p>Copyright (c) 2025 Juan Manuel López</p>
@@ -52,14 +56,11 @@ footer {
   color: #fff;
 }
 
-main {
+.psp {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 65vh;
-  padding-bottom: 5vh;
-  width: 60vw;
-  background-color: #027dde;
+  flex-wrap: wrap;
 }
 
 .psp-screen {
@@ -68,5 +69,24 @@ main {
   justify-content: center;
   height: 56vh;
   width: 56vw;
+}
+
+.psp-centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
+  padding-bottom: 5vh;
+  width: 64vw;
+  background-color: #027dde;
+  border-radius: 2vw;
+}
+
+.psp-right,
+.psp-left {
+  height: 57vh;
+  width: 15vw;
+  background-color: #027dde;
+  border-radius: 50%;
 }
 </style>
