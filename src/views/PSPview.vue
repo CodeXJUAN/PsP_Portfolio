@@ -1,31 +1,31 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const menuItems = [
   {
-    icon: 'mdi:music',
-    label: 'Music',
+    icon: 'material-symbols:school-rounded',
+    label: 'Education',
     items: ['All Songs', 'Albums', 'Artists'],
   },
   {
-    icon: 'mdi:movie-open',
-    label: 'Video',
+    icon: 'material-symbols:work',
+    label: 'Experience',
     items: ['All Videos', 'Movies', 'Clips'],
   },
   {
-    icon: 'mdi:controller-classic',
-    label: 'Games',
+    icon: 'tabler:code',
+    label: 'Projects',
     items: ['All Games', 'Favorites', 'Recently Played'],
   },
   {
-    icon: 'mdi:web',
-    label: 'Internet',
+    icon: 'majesticons:user',
+    label: 'About me',
     items: ['Browser', 'Bookmarks'],
   },
   {
-    icon: 'mdi:cog',
-    label: 'Settings',
+    icon: 'material-symbols:mail-rounded',
+    label: 'Contact',
     items: ['System', 'Display', 'Sound'],
   },
 ]
@@ -48,6 +48,35 @@ function selectDown() {
   const items = menuItems[selectedCategory.value].items
   selectedItem.value = (selectedItem.value + 1) % items.length
 }
+
+function handleKeyDown(event) {
+  switch (event.key) {
+    case 'ArrowLeft':
+    case 'a':
+      selectLeft()
+      break
+    case 'ArrowRight':
+    case 'd':
+      selectRight()
+      break
+    case 'ArrowUp':
+    case 'w':
+      selectUp()
+      break
+    case 'ArrowDown':
+    case 's':
+      selectDown()
+      break
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown)
+})
 </script>
 
 <template>
@@ -98,7 +127,6 @@ function selectDown() {
       </path>
     </svg>
     <div class="xmb-menu">
-      <button class="xmb-arrow" @click="selectLeft">&#8592;</button>
       <div class="xmb-items">
         <div
           v-for="(item, idx) in menuItems"
@@ -109,10 +137,8 @@ function selectDown() {
           <span class="xmb-label" v-if="idx === selectedCategory">{{ item.label }}</span>
         </div>
       </div>
-      <button class="xmb-arrow" @click="selectRight">&#8594;</button>
     </div>
     <div class="xmb-subitems">
-      <button class="xmb-arrow" @click="selectUp">&#8593;</button>
       <div class="xmb-subitems-list">
         <div
           v-for="(subitem, idx) in menuItems[selectedCategory].items"
@@ -122,11 +148,10 @@ function selectDown() {
           {{ subitem }}
         </div>
       </div>
-      <button class="xmb-arrow" @click="selectDown">&#8595;</button>
     </div>
     <div class="psp-info">
       <span>16/4 22:30</span>
-      <span class="psp-battery"></span>
+      <Icon icon="mdi:battery-high" class="psp-battery" />
     </div>
   </div>
 </template>
@@ -134,8 +159,8 @@ function selectDown() {
 <style scoped>
 .psp-xmb-bg {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: #222a4a;
   display: flex;
@@ -159,30 +184,32 @@ function selectDown() {
   align-items: center;
   justify-content: center;
   margin-bottom: 40px;
-  /* Remove background and border-radius for transparent look */
-  background: none;
-  border-radius: 0;
-  padding: 0;
-}
-.xmb-arrow {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2.5rem;
-  cursor: pointer;
-  margin: 0 20px;
-  user-select: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-.xmb-arrow:hover {
-  opacity: 1;
+  width: 100%;
 }
 .xmb-items {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 38px;
+  width: 100%;
+}
+.xmb-subitems {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.xmb-subitems-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin: 20px 0;
+  width: 100%;
 }
 .xmb-item {
   display: flex;
@@ -244,33 +271,18 @@ function selectDown() {
 }
 .psp-info {
   position: absolute;
-  bottom: 40px;
+  top: 40px;
   right: 60px;
   color: #fff;
-  font-family: 'Consolas', monospace;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
   gap: 16px;
   z-index: 2;
 }
+
 .psp-battery {
-  display: inline-block;
-  width: 28px;
-  height: 14px;
-  border: 2px solid #fff;
-  border-radius: 3px;
-  position: relative;
-  margin-left: 8px;
-}
-.psp-battery::after {
-  content: '';
-  position: absolute;
-  right: -6px;
-  top: 3px;
-  width: 4px;
-  height: 6px;
-  background: #fff;
-  border-radius: 1px;
+  font-size: 2rem;
+  rotate: 270deg;
 }
 </style>

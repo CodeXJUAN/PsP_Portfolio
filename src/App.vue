@@ -24,7 +24,7 @@ import { RouterView } from 'vue-router'
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Planet Kosmos', sans-serif;
+  font-family: 'Consolas', monospace;
 }
 
 :global(html, body) {
