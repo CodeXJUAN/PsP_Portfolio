@@ -42,7 +42,7 @@ import { RouterView } from 'vue-router'
 header,
 footer {
   width: 100vw;
-  height: 5vh;
+  height: 14vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,8 +61,8 @@ main {
 }
 
 .psp {
-  height: 85vh;
-  width: 84vw;
+  height: 65vh;
+  width: 65vw;
   background-color: #000;
   border: 1px solid #fff;
   border-radius: 10px;

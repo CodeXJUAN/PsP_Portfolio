@@ -6,27 +6,47 @@ const menuItems = [
   {
     icon: 'material-symbols:school-rounded',
     label: 'Education',
-    items: ['All Songs', 'Albums', 'Artists'],
+    items: [
+      { icon: 'mdi:school', label: 'University' },
+      { icon: 'mdi:certificate', label: 'Certifications' },
+      { icon: 'mdi:book-education', label: 'Courses' },
+    ],
   },
   {
     icon: 'material-symbols:work',
     label: 'Experience',
-    items: ['All Videos', 'Movies', 'Clips'],
+    items: [
+      { icon: 'mdi:briefcase', label: 'Work History' },
+      { icon: 'mdi:tools', label: 'Skills' },
+      { icon: 'mdi:star', label: 'Achievements' },
+    ],
   },
   {
     icon: 'tabler:code',
     label: 'Projects',
-    items: ['All Games', 'Favorites', 'Recently Played'],
+    items: [
+      { icon: 'mdi:github', label: 'GitHub Projects' },
+      { icon: 'mdi:web', label: 'Web Development' },
+      { icon: 'mdi:android', label: 'Mobile Apps' },
+    ],
   },
   {
     icon: 'majesticons:user',
     label: 'About me',
-    items: ['Browser', 'Bookmarks'],
+    items: [
+      { icon: 'mdi:account', label: 'Profile' },
+      { icon: 'mdi:heart', label: 'Interests' },
+      { icon: 'mdi:target', label: 'Goals' },
+    ],
   },
   {
     icon: 'material-symbols:mail-rounded',
     label: 'Contact',
-    items: ['System', 'Display', 'Sound'],
+    items: [
+      { icon: 'mdi:email', label: 'Email' },
+      { icon: 'mdi:linkedin', label: 'LinkedIn' },
+      { icon: 'mdi:github', label: 'Github' },
+    ],
   },
 ]
 const selectedCategory = ref(1)
@@ -80,7 +100,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="psp-xmb-bg">
+  <div
+    class="psp-xmb-bg"
+    :style="{
+      '--selected-category': selectedCategory,
+      '--selected-item': selectedItem,
+    }"
+  >
     <svg class="psp-bg-svg" viewBox="0 0 400 300" preserveAspectRatio="none">
       <defs>
         <linearGradient id="pspGradient" x1="0" y1="0" x2="1" y2="1">
@@ -142,10 +168,11 @@ onUnmounted(() => {
       <div class="xmb-subitems-list">
         <div
           v-for="(subitem, idx) in menuItems[selectedCategory].items"
-          :key="subitem"
+          :key="subitem.label"
           :class="['xmb-subitem', { selected: idx === selectedItem }]"
         >
-          {{ subitem }}
+          <Icon :icon="subitem.icon" class="xmb-subicon" />
+          <span>{{ subitem.label }}</span>
         </div>
       </div>
     </div>
@@ -193,23 +220,18 @@ onUnmounted(() => {
   justify-content: center;
   gap: 38px;
   width: 100%;
+  transition: transform 0.3s ease;
+  transform: translateX(calc(50% - var(--selected-category, 0) * 120px));
 }
-.xmb-subitems {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.xmb-subitems-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  margin: 20px 0;
-  width: 100%;
+.xmb-label {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #fff;
+  background: none;
+  padding: 4px 16px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
 }
 .xmb-item {
   display: flex;
@@ -231,16 +253,6 @@ onUnmounted(() => {
   transform: scale(1.2);
   filter: drop-shadow(0 4px 8px #000a);
 }
-.xmb-label {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #fff;
-  background: none;
-  padding: 4px 16px;
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
-  letter-spacing: 1px;
-}
 .xmb-subitems {
   position: relative;
   z-index: 1;
@@ -248,26 +260,42 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 40%;
 }
 .xmb-subitems-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 18px;
   margin: 20px 0;
+  width: 100%;
+  transition: transform 0.3s ease;
+  transform: translateY(calc(50% - var(--selected-item, 0) * 60px));
 }
+
 .xmb-subitem {
+  display: flex;
+  align-items: center;
   color: #bbb;
   font-size: 1.3rem;
   opacity: 0.6;
   transition:
     color 0.2s,
     opacity 0.2s;
+  width: 100%;
 }
 .xmb-subitem.selected {
   color: #fff;
   opacity: 1;
   font-size: 1.6rem;
+}
+.xmb-subicon {
+  margin-right: 8px;
+  font-size: 2.5rem; /* Igualado al tamaño de los iconos principales */
+  transition: all 0.2s ease;
+}
+.xmb-subitem.selected .xmb-subicon {
+  font-size: 3.5rem; /* Igualado al tamaño seleccionado */
 }
 .psp-info {
   position: absolute;
