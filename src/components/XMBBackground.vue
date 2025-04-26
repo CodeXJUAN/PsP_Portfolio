@@ -1,12 +1,11 @@
-<!-- src/components/PSP/XMBBackground.vue -->
 <script setup></script>
 
 <template>
   <svg class="psp-bg-svg" viewBox="0 0 400 300" preserveAspectRatio="none">
     <defs>
       <linearGradient id="pspGradient" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#e6e6e6" />
-        <stop offset="100%" stop-color="#222a4a" />
+        <stop offset="0%" stop-color="#1a237e" />
+        <stop offset="100%" stop-color="#4a148c" />
       </linearGradient>
     </defs>
     <rect width="400" height="300" fill="url(#pspGradient)" />
