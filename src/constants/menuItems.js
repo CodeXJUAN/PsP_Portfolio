@@ -3,16 +3,16 @@ export const menuItems = [
     icon: 'material-symbols:school-rounded',
     label: 'Education',
     items: [
-      { icon: 'mdi:school', label: 'University' },
+      { icon: 'la:university', label: 'University' },
       { icon: 'mdi:certificate', label: 'Certifications' },
-      { icon: 'mdi:book-education', label: 'Courses' },
+      { icon: 'material-symbols:book', label: 'Courses' },
     ],
   },
   {
     icon: 'material-symbols:work',
     label: 'Experience',
     items: [
-      { icon: 'mdi:briefcase', label: 'Work History' },
+      { icon: 'material-symbols:history-rounded', label: 'Work History' },
       { icon: 'mdi:tools', label: 'Skills' },
       { icon: 'mdi:star', label: 'Achievements' },
     ],
@@ -30,7 +30,7 @@ export const menuItems = [
     icon: 'majesticons:user',
     label: 'About me',
     items: [
-      { icon: 'mdi:account', label: 'Profile' },
+      { icon: 'mingcute:profile-fill', label: 'Profile' },
       { icon: 'mdi:heart', label: 'Interests' },
       { icon: 'mdi:target', label: 'Goals' },
     ],
@@ -39,7 +39,7 @@ export const menuItems = [
     icon: 'material-symbols:mail-rounded',
     label: 'Contact',
     items: [
-      { icon: 'mdi:email', label: 'Email' },
+      { icon: 'fa6-solid:paper-plane', label: 'Email' },
       { icon: 'mdi:linkedin', label: 'LinkedIn' },
       { icon: 'mdi:github', label: 'Github' },
     ],

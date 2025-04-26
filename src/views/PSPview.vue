@@ -1,6 +1,6 @@
 <!-- src/views/PSPView.vue -->
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { menuItems } from '@/constants/menuItems'
 import { useXMBControls } from '@/composables/useXMBControls'
 import XMBBackground from '@/components/XMBBackground.vue'
@@ -10,12 +10,30 @@ import PSPInfo from '@/components/PSPInfo.vue'
 
 const { selectedCategory, selectedItem, handleKeyDown } = useXMBControls(menuItems)
 
+// Variable para controlar si la navegación está bloqueada
+const isNavigationBlocked = ref(false)
+
+// Función personalizada para manejar eventos de teclado
+const handleKeyDownWithModal = (event) => {
+  // Si la navegación está bloqueada, no procesamos las teclas de navegación
+  if (isNavigationBlocked.value) {
+    // Permitimos que la tecla espacio siga funcionando para cerrar el modal
+    if (event.code !== 'Space') {
+      event.preventDefault()
+      return
+    }
+  }
+
+  // Si no está bloqueada, usamos el manejador normal
+  handleKeyDown(event)
+}
+
 onMounted(() => {
-  window.addEventListener('keydown', handleKeyDown)
+  window.addEventListener('keydown', handleKeyDownWithModal)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeyDown)
+  window.removeEventListener('keydown', handleKeyDownWithModal)
 })
 </script>
 
@@ -29,7 +47,12 @@ onUnmounted(() => {
   >
     <XMBBackground />
     <XMBMainMenu :items="menuItems" :selected-category="selectedCategory" />
-    <XMBSubMenu :items="menuItems[selectedCategory].items" :selected-item="selectedItem" />
+    <XMBSubMenu
+      :items="menuItems[selectedCategory].items"
+      :selected-item="selectedItem"
+      @block-navigation="isNavigationBlocked = true"
+      @unblock-navigation="isNavigationBlocked = false"
+    />
     <PSPInfo />
   </div>
 </template>

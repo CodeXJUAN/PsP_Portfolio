@@ -1,53 +1,145 @@
-<!-- src/components/PSP/XMBSubMenu.vue -->
 <script setup>
 import { Icon } from '@iconify/vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   items: Array,
   selectedItem: Number,
 })
 
-// Función para calcular la opacidad basada en la distancia al elemento seleccionado
+const emit = defineEmits(['block-navigation', 'unblock-navigation'])
+
+const isModalOpen = ref(false)
+
+const modalItem = ref(null)
+
+// Crear referencia al elemento de audio
+const accessSound = new Audio('/audios/audio_access.mp3')
+
 const getItemOpacity = (idx) => {
   const distance = Math.abs(idx - props.selectedItem)
-  if (distance === 0) return 1 // Elemento seleccionado: opacidad completa
-  if (distance === 1) return 0.5 // Elementos adyacentes: opacidad media
-  if (distance === 2) return 0.5 // Elementos un poco más alejados: opacidad baja
-  return 0 // Elementos muy alejados: invisibles
+  if (distance === 0) return 1
+  if (distance === 1) return 0.5
+  if (distance === 2) return 0.5
+  return 0
 }
 
-// Función para determinar si el elemento debe ser visible
 const isItemVisible = (idx) => {
   const distance = Math.abs(idx - props.selectedItem)
-  return distance <= 2 // Solo muestra elementos que están a 2 o menos posiciones de distancia
+  return distance <= 2
 }
 
-// Nueva función para calcular el desplazamiento vertical basado en la distancia
 const getItemTransform = (idx) => {
   const distance = Math.abs(idx - props.selectedItem)
 
-  // Determinar dirección del desplazamiento (arriba o abajo)
   const direction = idx > props.selectedItem ? 1 : -1
 
-  // Desplazamiento vertical diferenciado según la posición
   let translateY = 0
 
   if (direction < 0) {
-    // Elementos por encima: 150px de desplazamiento
     translateY = distance * 150
   } else {
-    // Elementos por debajo: 20px de desplazamiento
     translateY = distance * 20
   }
 
   return `translateY(${translateY * direction}px)`
 }
+
+// Función para reproducir el sonido de acceso
+const playAccessSound = () => {
+  // Reiniciar el audio en caso de que ya esté reproduciéndose
+  accessSound.currentTime = 0
+  accessSound.play()
+}
+
+const toggleModal = (item) => {
+  if (isModalOpen.value && modalItem.value === item) {
+    closeModal()
+  } else {
+    openModal(item)
+  }
+}
+
+const openModal = (item) => {
+  // Reproducir sonido antes de abrir el modal
+  playAccessSound()
+  isModalOpen.value = true
+  modalItem.value = item
+  emit('block-navigation')
+}
+
+const closeModal = () => {
+  isModalOpen.value = false
+  modalItem.value = null
+  emit('unblock-navigation')
+}
+
+const openExternalLink = (item) => {
+  // Reproducir sonido antes de abrir el enlace externo
+  playAccessSound()
+
+  let url = ''
+
+  switch (item.label) {
+    case 'LinkedIn':
+      url = 'https://www.linkedin.com/in/juan-manuel-l%C3%B3pez-arrieta-0594912ab/'
+      break
+    case 'Github':
+      url = 'https://github.com/CodeXJUAN'
+      break
+    case 'Email':
+      url = 'mailto:juanmanuellopezarrieta@gmail.com'
+      break
+    default:
+      openModal(item)
+      return
+  }
+
+  // Esperar a que termine el sonido antes de abrir la URL
+  // Esto es opcional, puedes quitarlo si prefieres que se abra inmediatamente
+  setTimeout(() => {
+    window.open(url, '_blank')
+  }, 500)
+}
+
+const handleKeyDown = (event) => {
+  if (event.code === 'Space') {
+    event.preventDefault()
+
+    if (isModalOpen.value) {
+      closeModal()
+    } else if (props.selectedItem !== undefined && props.items) {
+      const selectedItem = props.items[props.selectedItem]
+
+      if (
+        selectedItem.icon === 'mdi:linkedin' ||
+        selectedItem.icon === 'mdi:github' ||
+        selectedItem.icon === 'fa6-solid:paper-plane'
+      ) {
+        openExternalLink(selectedItem)
+      } else {
+        openModal(selectedItem)
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown)
+  if (isModalOpen.value) {
+    emit('unblock-navigation')
+  }
+})
 </script>
 
 <template>
   <div class="xmb-subitems">
     <div class="xmb-subitems-list">
-      <div
+      <button
         v-for="(subitem, idx) in items"
         :key="subitem.label"
         :class="['xmb-subitem', { selected: idx === selectedItem }]"
@@ -56,12 +148,21 @@ const getItemTransform = (idx) => {
           visibility: isItemVisible(idx) ? 'visible' : 'hidden',
           transform: getItemTransform(idx),
         }"
+        @click="toggleModal(subitem)"
       >
         <Icon :icon="subitem.icon" class="xmb-subicon" />
         <span v-if="idx === selectedItem">{{ subitem.label }}</span>
-      </div>
+      </button>
     </div>
   </div>
+
+  <aside v-if="isModalOpen && modalItem" class="xmb-modal">
+    <div class="xmb-modal-content">
+      <h2>{{ modalItem.label }}</h2>
+      <p>Contenido detallado para {{ modalItem.label }}</p>
+      <p class="modal-hint">Presiona espacio para cerrar</p>
+    </div>
+  </aside>
 </template>
 
 <style scoped>
@@ -94,9 +195,14 @@ const getItemTransform = (idx) => {
     color 0.2s,
     opacity 0.3s,
     visibility 0.3s,
-    transform 0.3s ease; /* Añadida transición para el transform */
+    transform 0.3s ease;
   width: 100%;
-  position: relative; /* Añadido para permitir posicionamiento relativo */
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
 }
 .xmb-subitem.selected {
   color: #fff;
@@ -109,5 +215,41 @@ const getItemTransform = (idx) => {
 }
 .xmb-subitem.selected .xmb-subicon {
   font-size: 3.5rem;
+}
+
+.xmb-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.xmb-modal-content {
+  background-color: #222;
+  border: 2px solid #0072ce;
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 114, 206, 0.5);
+}
+
+.xmb-modal-content h2 {
+  color: #0072ce;
+  margin-bottom: 15px;
+}
+
+.modal-hint {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
 }
 </style>
