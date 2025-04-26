@@ -5,7 +5,7 @@ import { playSound } from '@/utils/audio.js'
 export function useXMBControls(menuItems) {
   const selectedCategory = ref(1)
   const selectedItem = ref(0)
-  const moveSound = '@/../public/audios/audio_move.mp3'
+  const moveSound = '/audios/audio_move.mp3'
 
   function selectLeft() {
     selectedCategory.value = (selectedCategory.value - 1 + menuItems.length) % menuItems.length
