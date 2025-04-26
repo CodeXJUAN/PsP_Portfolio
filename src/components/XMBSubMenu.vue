@@ -13,7 +13,6 @@ const isModalOpen = ref(false)
 
 const modalItem = ref(null)
 
-// Crear referencia al elemento de audio
 const accessSound = new Audio('/audios/audio_access.mp3')
 
 const getItemOpacity = (idx) => {
@@ -45,9 +44,7 @@ const getItemTransform = (idx) => {
   return `translateY(${translateY * direction}px)`
 }
 
-// Función para reproducir el sonido de acceso
 const playAccessSound = () => {
-  // Reiniciar el audio en caso de que ya esté reproduciéndose
   accessSound.currentTime = 0
   accessSound.play()
 }
@@ -61,7 +58,6 @@ const toggleModal = (item) => {
 }
 
 const openModal = (item) => {
-  // Reproducir sonido antes de abrir el modal
   playAccessSound()
   isModalOpen.value = true
   modalItem.value = item
@@ -75,7 +71,6 @@ const closeModal = () => {
 }
 
 const openExternalLink = (item) => {
-  // Reproducir sonido antes de abrir el enlace externo
   playAccessSound()
 
   let url = ''
@@ -94,9 +89,6 @@ const openExternalLink = (item) => {
       openModal(item)
       return
   }
-
-  // Esperar a que termine el sonido antes de abrir la URL
-  // Esto es opcional, puedes quitarlo si prefieres que se abra inmediatamente
   setTimeout(() => {
     window.open(url, '_blank')
   }, 500)
