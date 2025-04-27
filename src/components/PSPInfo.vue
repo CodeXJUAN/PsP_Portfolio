@@ -1,12 +1,21 @@
-<!-- src/components/PSP/PSPInfo.vue -->
 <script setup>
 import { Icon } from '@iconify/vue'
+
+defineProps({
+  time: {
+    type: String,
+  },
+  battery: {
+    type: String,
+    default: 'high',
+  },
+})
 </script>
 
 <template>
   <div class="psp-info">
-    <span>16/4 22:30</span>
-    <Icon icon="mdi:battery-high" class="psp-battery" />
+    <span>{{ time }}</span>
+    <Icon :icon="`mdi:battery-${battery}`" class="psp-battery" />
   </div>
 </template>
 

@@ -1,15 +1,35 @@
 <!-- src/components/PSP/XMBMainMenu.vue -->
 <script setup>
 import { Icon } from '@iconify/vue'
+import { ref } from 'vue'
 
 defineProps({
   items: Array,
   selectedCategory: Number,
 })
+
+// Añadimos una referencia para controlar la visibilidad del menú
+const isNavigationBlocked = ref(false)
+
+// Método para bloquear la navegación (ocultar el menú)
+const blockNavigation = () => {
+  isNavigationBlocked.value = true
+}
+
+// Método para desbloquear la navegación (mostrar el menú)
+const unblockNavigation = () => {
+  isNavigationBlocked.value = false
+}
+
+// Exponemos los métodos para que puedan ser llamados desde el componente padre
+defineExpose({
+  blockNavigation,
+  unblockNavigation,
+})
 </script>
 
 <template>
-  <div class="xmb-menu">
+  <div class="xmb-menu" v-show="!isNavigationBlocked">
     <div class="xmb-items">
       <div
         v-for="(item, idx) in items"

@@ -13,6 +13,22 @@ const { selectedCategory, selectedItem, handleKeyDown } = useXMBControls(menuIte
 // Variable para controlar si la navegación está bloqueada
 const isNavigationBlocked = ref(false)
 
+// Variable para almacenar la fecha y hora actual
+const currentTime = ref('')
+
+// Función para actualizar la fecha y hora
+const updateTime = () => {
+  const now = new Date()
+  const day = now.getDate().toString().padStart(2, '0')
+  const month = (now.getMonth() + 1).toString().padStart(2, '0')
+  const hours = now.getHours().toString().padStart(2, '0')
+  const minutes = now.getMinutes().toString().padStart(2, '0')
+  currentTime.value = `${day}/${month} ${hours}:${minutes}`
+}
+
+// Referencia para el intervalo de actualización de la hora
+let timeInterval = null
+
 // Función personalizada para manejar eventos de teclado
 const handleKeyDownWithModal = (event) => {
   // Si la navegación está bloqueada, no procesamos las teclas de navegación
@@ -30,10 +46,21 @@ const handleKeyDownWithModal = (event) => {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDownWithModal)
+
+  // Inicializar la hora actual
+  updateTime()
+
+  // Actualizar la hora cada minuto
+  timeInterval = setInterval(updateTime, 60000)
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDownWithModal)
+
+  // Limpiar el intervalo cuando el componente se desmonta
+  if (timeInterval) {
+    clearInterval(timeInterval)
+  }
 })
 </script>
 
@@ -53,7 +80,7 @@ onUnmounted(() => {
       @block-navigation="isNavigationBlocked = true"
       @unblock-navigation="isNavigationBlocked = false"
     />
-    <PSPInfo />
+    <PSPInfo :time="currentTime" />
   </div>
 </template>
 

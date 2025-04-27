@@ -129,7 +129,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="xmb-subitems">
+  <div class="xmb-subitems" v-show="!isModalOpen">
     <div class="xmb-subitems-list">
       <button
         v-for="(subitem, idx) in items"
@@ -148,13 +148,77 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <aside v-if="isModalOpen && modalItem" class="xmb-modal">
-    <div class="xmb-modal-content">
+  <div v-if="isModalOpen && modalItem" class="xmb-detail-view">
+    <div class="xmb-detail-content">
       <h2>{{ modalItem.label }}</h2>
-      <p>Contenido detallado para {{ modalItem.label }}</p>
+
+      <!-- Contenido específico para cada subitem basado en su label -->
+      <div v-if="modalItem.label === 'Where and what did I study?'" class="detail-section">
+        <p>Estudié Ingeniería Informática en la Universidad de Vic.</p>
+        <p>Me especialicé en desarrollo de software y sistemas.</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Languages'" class="detail-section">
+        <p>Español: Nativo</p>
+        <p>Inglés: Nivel C1</p>
+        <p>Catalán: Nivel C1</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Certifications'" class="detail-section">
+        <p>Certificación en Desarrollo Web Full Stack</p>
+        <p>Certificación en Cloud Computing</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Experience'" class="detail-section">
+        <p>Desarrollador Web - Empresa XYZ (2022-Presente)</p>
+        <p>Desarrollador Junior - Startup ABC (2020-2022)</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Skills'" class="detail-section">
+        <p>Frontend: Vue.js, React, HTML5, CSS3</p>
+        <p>Backend: Node.js, Express, Python</p>
+        <p>Bases de datos: MongoDB, MySQL</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
+        <p>Aplicación de gestión de inventario</p>
+        <p>Sistema de análisis de datos</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Web Development'" class="detail-section">
+        <p>Sitio web de comercio electrónico</p>
+        <p>Plataforma de aprendizaje en línea</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section">
+        <p>Aplicación de seguimiento de fitness</p>
+        <p>Aplicación de notas y recordatorios</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Profile'" class="detail-section">
+        <p>Soy un desarrollador apasionado por crear soluciones tecnológicas innovadoras.</p>
+        <p>Me encanta aprender nuevas tecnologías y enfrentar desafíos complejos.</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Interests'" class="detail-section">
+        <p>Desarrollo de videojuegos</p>
+        <p>Inteligencia artificial</p>
+        <p>Música y producción de audio</p>
+      </div>
+
+      <div v-else-if="modalItem.label === 'Goals'" class="detail-section">
+        <p>Convertirme en un desarrollador full-stack senior</p>
+        <p>Contribuir a proyectos de código abierto</p>
+        <p>Crear mi propia startup tecnológica</p>
+      </div>
+
+      <div v-else class="detail-section">
+        <p>Contenido detallado para {{ modalItem.label }}</p>
+      </div>
+
       <p class="modal-hint">Presiona espacio para cerrar</p>
     </div>
-  </aside>
+  </div>
 </template>
 
 <style scoped>
@@ -167,7 +231,7 @@ onUnmounted(() => {
   justify-content: center;
   width: 40%;
 }
-.xmb-subitems-list {  
+.xmb-subitems-list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -209,39 +273,57 @@ onUnmounted(() => {
   font-size: 3.5rem;
 }
 
-.xmb-modal {
-  position: fixed;
+.xmb-detail-view {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Eliminamos el fondo semitransparente y el blur */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* backdrop-filter: blur(3px); */
 }
 
-.xmb-modal-content {
-  background-color: #222;
-  border: 2px solid #0072ce;
-  border-radius: 8px;
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
+.xmb-detail-content {
+  padding: 30px;
+  width: 90%;
+  max-width: 800px;
   color: white;
-  box-shadow: 0 0 20px rgba(0, 114, 206, 0.5);
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  /* Añadimos una transición suave */
+  transition: all 0.3s ease;
 }
 
-.xmb-modal-content h2 {
-  color: #0072ce;
-  margin-bottom: 15px;
+.xmb-detail-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.detail-section {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.detail-section p {
+  margin-bottom: 10px;
 }
 
 .modal-hint {
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 0.9rem;
-  color: #999;
+  color: #fff;
   text-align: center;
+  opacity: 0.7;
 }
 </style>
