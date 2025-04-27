@@ -3,7 +3,7 @@ export const menuItems = [
     icon: 'material-symbols:school-rounded',
     label: 'Education',
     items: [
-      { icon: 'la:university', label: 'University' },
+      { icon: 'la:university', label: 'Where and what did I study?' },
       { icon: 'mdi:language', label: 'Languages' },
       { icon: 'mdi:certificate', label: 'Certifications' },
     ],
