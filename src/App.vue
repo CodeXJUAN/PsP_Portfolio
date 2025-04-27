@@ -39,6 +39,10 @@ import { RouterView } from 'vue-router'
   background-color: #333;
 }
 
+:global(*) {
+  text-shadow: 0 6px 12px rgba(0, 0, 0);
+}
+
 header,
 footer {
   width: 100vw;

@@ -283,9 +283,6 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Eliminamos el fondo semitransparente y el blur */
-  /* background-color: rgba(0, 0, 0, 0.5); */
-  /* backdrop-filter: blur(3px); */
 }
 
 .xmb-detail-content {
@@ -297,8 +294,6 @@ onUnmounted(() => {
   z-index: 2;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  /* Añadimos una transición suave */
   transition: all 0.3s ease;
 }
 

@@ -62,6 +62,27 @@ onUnmounted(() => {
     clearInterval(timeInterval)
   }
 })
+
+// Referencia al componente XMBMainMenu
+const mainMenuRef = ref(null)
+
+// Función para manejar el bloqueo de navegación
+const handleBlockNavigation = () => {
+  isNavigationBlocked.value = true
+  // Llamamos al método blockNavigation del componente XMBMainMenu
+  if (mainMenuRef.value) {
+    mainMenuRef.value.blockNavigation()
+  }
+}
+
+// Función para manejar el desbloqueo de navegación
+const handleUnblockNavigation = () => {
+  isNavigationBlocked.value = false
+  // Llamamos al método unblockNavigation del componente XMBMainMenu
+  if (mainMenuRef.value) {
+    mainMenuRef.value.unblockNavigation()
+  }
+}
 </script>
 
 <template>
@@ -73,12 +94,12 @@ onUnmounted(() => {
     }"
   >
     <XMBBackground />
-    <XMBMainMenu :items="menuItems" :selected-category="selectedCategory" />
+    <XMBMainMenu ref="mainMenuRef" :items="menuItems" :selected-category="selectedCategory" />
     <XMBSubMenu
       :items="menuItems[selectedCategory].items"
       :selected-item="selectedItem"
-      @block-navigation="isNavigationBlocked = true"
-      @unblock-navigation="isNavigationBlocked = false"
+      @block-navigation="handleBlockNavigation"
+      @unblock-navigation="handleUnblockNavigation"
     />
     <PSPInfo :time="currentTime" />
   </div>
