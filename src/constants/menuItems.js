@@ -4,26 +4,25 @@ export const menuItems = [
     label: 'Education',
     items: [
       { icon: 'la:university', label: 'University' },
+      { icon: 'mdi:language', label: 'Languages' },
       { icon: 'mdi:certificate', label: 'Certifications' },
-      { icon: 'material-symbols:book', label: 'Courses' },
     ],
   },
   {
     icon: 'material-symbols:work',
-    label: 'Experience',
+    label: 'Work',
     items: [
-      { icon: 'material-symbols:history-rounded', label: 'Work History' },
+      { icon: 'material-symbols:history-rounded', label: 'Experience' },
       { icon: 'mdi:tools', label: 'Skills' },
-      { icon: 'mdi:star', label: 'Achievements' },
     ],
   },
   {
     icon: 'tabler:code',
     label: 'Projects',
     items: [
-      { icon: 'mdi:github', label: 'GitHub Projects' },
+      { icon: 'mdi:terminal', label: 'Software Development' },
       { icon: 'mdi:web', label: 'Web Development' },
-      { icon: 'mdi:android', label: 'Mobile Apps' },
+      { icon: 'mynaui:mobile', label: 'Mobile Apps' },
     ],
   },
   {

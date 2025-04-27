@@ -35,18 +35,22 @@ export function useXMBControls(menuItems) {
     switch (event.key) {
       case 'ArrowLeft':
       case 'a':
+      case 'A':
         selectLeft()
         break
       case 'ArrowRight':
       case 'd':
+      case 'D':
         selectRight()
         break
       case 'ArrowUp':
       case 'w':
+      case 'W':
         selectUp()
         break
       case 'ArrowDown':
       case 's':
+      case 'S':
         selectDown()
         break
     }

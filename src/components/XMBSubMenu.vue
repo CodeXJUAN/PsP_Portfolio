@@ -167,7 +167,7 @@ onUnmounted(() => {
   justify-content: center;
   width: 40%;
 }
-.xmb-subitems-list {
+.xmb-subitems-list {  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
