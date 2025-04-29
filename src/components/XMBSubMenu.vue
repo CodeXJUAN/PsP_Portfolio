@@ -199,17 +199,47 @@ onUnmounted(() => {
         </div>
         <div v-else-if="modalItem.label === 'Languages'" class="detail-section">
           <div class="language-details">
-            <ul>
-              <li>Spanish: Mother tongue</li>
-              <li>Catalan: Mother tongue</li>
-              <li>English: Level B2</li>
-            </ul>
+            <p>
+              When it comes to languages that I am fluent at there is 3. The first two are Spanish
+              and Catalan because of where I live, and where I was raised, that is in Manresa,
+              Catalonia.
+            </p>
+            <p>
+              There is another language that I could say that I am fluent at, this one is English.
+              Since i was 8 years of age my parents decided to enroll me in a language school where
+              they chose me to learn english without my agreement.
+            </p>
+            <p>
+              But I have to thank them because if they hadn't signed me up back then, I wouldn't be
+              writing this now, and I wouldn't be able to do other things I like to do.
+            </p>
           </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Certifications'" class="detail-section">
-          <p>Certificación en Desarrollo Web Full Stack</p>
-          <p>Certificación en Cloud Computing</p>
+          <div class="certificate-div">
+            <p>
+              In this section here, you can see the certificates I have acquired over the years:
+            </p>
+            <div class="certificatesDiv">
+              <div class="certificates">
+                <div>
+                  <h4>Intermediate Vocational Training</h4>
+                </div>
+                <div>
+                  <p>June of 2024</p>
+                </div>
+              </div>
+              <div class="certificates">
+                <div>
+                  <h4>First Certificate in English (B2)</h4>
+                </div>
+                <div>
+                  <p>June of 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Experience'" class="detail-section">
@@ -392,22 +422,37 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-.header h2,
-.subicons {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
 .header {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   height: 50%;
   gap: 20px;
+  align-items: center;
 }
 
+.header h2,
+.subicons {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.header h2 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.subicons {
+  font-size: 2.6rem;
+}
+
+.header {
+  margin-bottom: 2vh;
+}
+
+.header h2 {
+  margin: 0;
+}
 .detail-section {
   margin-bottom: 20px;
   line-height: 1.6;
@@ -436,9 +481,40 @@ onUnmounted(() => {
 
 .language-details {
   display: flex;
-  width: 50%;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
   gap: 10px;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.certificatesDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.certificates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  height: auto;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
