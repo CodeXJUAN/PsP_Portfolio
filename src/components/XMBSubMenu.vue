@@ -10,7 +10,7 @@ const props = defineProps({
 const emit = defineEmits(['block-navigation', 'unblock-navigation'])
 
 const isModalOpen = ref(false)
-
+const isLoading = ref(false)
 const modalItem = ref(null)
 
 const accessSound = new Audio('/audios/audio_access.mp3')
@@ -59,9 +59,17 @@ const toggleModal = (item) => {
 
 const openModal = (item) => {
   playAccessSound()
-  isModalOpen.value = true
-  modalItem.value = item
+  isLoading.value = true
   emit('block-navigation')
+
+  // Guardamos el item para usarlo después
+  modalItem.value = item
+
+  // Esperamos 1 segundo antes de mostrar el modal
+  setTimeout(() => {
+    isLoading.value = false
+    isModalOpen.value = true
+  }, 1000)
 }
 
 const closeModal = () => {
@@ -129,7 +137,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="xmb-subitems" v-show="!isModalOpen">
+  <div class="xmb-subitems" :class="{ 'fade-out': isLoading || isModalOpen }" v-show="!isModalOpen">
     <div class="xmb-subitems-list">
       <button
         v-for="(subitem, idx) in items"
@@ -148,77 +156,84 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <div v-if="isModalOpen && modalItem" class="xmb-detail-view">
-    <div class="xmb-detail-content">
-      <h2>{{ modalItem.label }}</h2>
-
-      <!-- Contenido específico para cada subitem basado en su label -->
-      <div v-if="modalItem.label === 'Where and what did I study?'" class="detail-section">
-        <p>Estudié Ingeniería Informática en la Universidad de Vic.</p>
-        <p>Me especialicé en desarrollo de software y sistemas.</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Languages'" class="detail-section">
-        <p>Español: Nativo</p>
-        <p>Inglés: Nivel C1</p>
-        <p>Catalán: Nivel C1</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Certifications'" class="detail-section">
-        <p>Certificación en Desarrollo Web Full Stack</p>
-        <p>Certificación en Cloud Computing</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Experience'" class="detail-section">
-        <p>Desarrollador Web - Empresa XYZ (2022-Presente)</p>
-        <p>Desarrollador Junior - Startup ABC (2020-2022)</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Skills'" class="detail-section">
-        <p>Frontend: Vue.js, React, HTML5, CSS3</p>
-        <p>Backend: Node.js, Express, Python</p>
-        <p>Bases de datos: MongoDB, MySQL</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
-        <p>Aplicación de gestión de inventario</p>
-        <p>Sistema de análisis de datos</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Web Development'" class="detail-section">
-        <p>Sitio web de comercio electrónico</p>
-        <p>Plataforma de aprendizaje en línea</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section">
-        <p>Aplicación de seguimiento de fitness</p>
-        <p>Aplicación de notas y recordatorios</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Profile'" class="detail-section">
-        <p>Soy un desarrollador apasionado por crear soluciones tecnológicas innovadoras.</p>
-        <p>Me encanta aprender nuevas tecnologías y enfrentar desafíos complejos.</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Interests'" class="detail-section">
-        <p>Desarrollo de videojuegos</p>
-        <p>Inteligencia artificial</p>
-        <p>Música y producción de audio</p>
-      </div>
-
-      <div v-else-if="modalItem.label === 'Goals'" class="detail-section">
-        <p>Convertirme en un desarrollador full-stack senior</p>
-        <p>Contribuir a proyectos de código abierto</p>
-        <p>Crear mi propia startup tecnológica</p>
-      </div>
-
-      <div v-else class="detail-section">
-        <p>Contenido detallado para {{ modalItem.label }}</p>
-      </div>
-
-      <p class="modal-hint">Presiona espacio para cerrar</p>
-    </div>
+  <!-- Preloader -->
+  <div v-if="isLoading" class="preloader">
+    <div class="spinner"></div>
   </div>
+
+  <Transition name="fade">
+    <div v-if="isModalOpen && modalItem" class="xmb-detail-view">
+      <div class="xmb-detail-content">
+        <h2>{{ modalItem.label }}</h2>
+
+        <!-- Contenido específico para cada subitem basado en su label -->
+        <div v-if="modalItem.label === 'Where and what did I study?'" class="detail-section">
+          <p>Estudié Ingeniería Informática en la Universidad de Vic.</p>
+          <p>Me especialicé en desarrollo de software y sistemas.</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Languages'" class="detail-section">
+          <p>Español: Nativo</p>
+          <p>Inglés: Nivel C1</p>
+          <p>Catalán: Nivel C1</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Certifications'" class="detail-section">
+          <p>Certificación en Desarrollo Web Full Stack</p>
+          <p>Certificación en Cloud Computing</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Experience'" class="detail-section">
+          <p>Desarrollador Web - Empresa XYZ (2022-Presente)</p>
+          <p>Desarrollador Junior - Startup ABC (2020-2022)</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Skills'" class="detail-section">
+          <p>Frontend: Vue.js, React, HTML5, CSS3</p>
+          <p>Backend: Node.js, Express, Python</p>
+          <p>Bases de datos: MongoDB, MySQL</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
+          <p>Aplicación de gestión de inventario</p>
+          <p>Sistema de análisis de datos</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Web Development'" class="detail-section">
+          <p>Sitio web de comercio electrónico</p>
+          <p>Plataforma de aprendizaje en línea</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section">
+          <p>Aplicación de seguimiento de fitness</p>
+          <p>Aplicación de notas y recordatorios</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Profile'" class="detail-section">
+          <p>Soy un desarrollador apasionado por crear soluciones tecnológicas innovadoras.</p>
+          <p>Me encanta aprender nuevas tecnologías y enfrentar desafíos complejos.</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Interests'" class="detail-section">
+          <p>Desarrollo de videojuegos</p>
+          <p>Inteligencia artificial</p>
+          <p>Música y producción de audio</p>
+        </div>
+
+        <div v-else-if="modalItem.label === 'Goals'" class="detail-section">
+          <p>Convertirme en un desarrollador full-stack senior</p>
+          <p>Contribuir a proyectos de código abierto</p>
+          <p>Crear mi propia startup tecnológica</p>
+        </div>
+
+        <div v-else class="detail-section">
+          <p>Contenido detallado para {{ modalItem.label }}</p>
+        </div>
+
+        <p class="modal-hint">Presiona espacio para cerrar</p>
+      </div>
+    </div>
+  </Transition>
 </template>
 
 <style scoped>
@@ -295,6 +310,59 @@ onUnmounted(() => {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   transition: all 0.3s ease;
+}
+
+/* Transición para ocultar los subitems */
+.xmb-subitems.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.xmb-subitems {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+/* Estilos para el preloader */
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Transiciones para el modal */
+.fade-enter-active {
+  transition: opacity 0.8s ease-in;
+}
+
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .xmb-detail-content h2 {
