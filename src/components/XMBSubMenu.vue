@@ -62,14 +62,12 @@ const openModal = (item) => {
   isLoading.value = true
   emit('block-navigation')
 
-  // Guardamos el item para usarlo después
   modalItem.value = item
 
-  // Esperamos 1 segundo antes de mostrar el modal
   setTimeout(() => {
     isLoading.value = false
     isModalOpen.value = true
-  }, 1000)
+  }, 500)
 }
 
 const closeModal = () => {
@@ -156,7 +154,6 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <!-- Preloader -->
   <div v-if="isLoading" class="preloader">
     <div class="spinner"></div>
   </div>
@@ -164,18 +161,50 @@ onUnmounted(() => {
   <Transition name="fade">
     <div v-if="isModalOpen && modalItem" class="xmb-detail-view">
       <div class="xmb-detail-content">
-        <h2>{{ modalItem.label }}</h2>
-
-        <!-- Contenido específico para cada subitem basado en su label -->
-        <div v-if="modalItem.label === 'Where and what did I study?'" class="detail-section">
-          <p>Estudié Ingeniería Informática en la Universidad de Vic.</p>
-          <p>Me especialicé en desarrollo de software y sistemas.</p>
+        <div class="header">
+          <Icon class="subicons" :icon="modalItem.icon" />
+          <h2>{{ modalItem.label }}</h2>
         </div>
 
+        <div v-if="modalItem.label === 'Where and what did I study?'" class="detail-section">
+          <div class="education_details">
+            <div class="before_and_now">
+              <p>
+                I studied a medium-level training cycle in Microcomputer Systems and networks in
+                Lacetània, Manresa.
+              </p>
+              <p>Where I learned:</p>
+              <ul>
+                <li>Hardware and Software</li>
+                <li>Networks</li>
+                <li>Programming</li>
+                <li>Web Development</li>
+                <li>Cybersecurity</li>
+              </ul>
+            </div>
+            <div class="before_and_now">
+              <p>
+                Now I am studying my first year in a higher level training cycle in Multiplatform
+                Application Development at the University of Vic, in Vic.
+              </p>
+              <p>Where I am currently expanding my knowledge in:</p>
+              <ul>
+                <li>Programming</li>
+                <li>Web Development</li>
+                <li>Database</li>
+                <li>Project Management</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div v-else-if="modalItem.label === 'Languages'" class="detail-section">
-          <p>Español: Nativo</p>
-          <p>Inglés: Nivel C1</p>
-          <p>Catalán: Nivel C1</p>
+          <div class="language-details">
+            <ul>
+              <li>Spanish: Mother tongue</li>
+              <li>Catalan: Mother tongue</li>
+              <li>English: Level B2</li>
+            </ul>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Certifications'" class="detail-section">
@@ -227,7 +256,7 @@ onUnmounted(() => {
         </div>
 
         <div v-else class="detail-section">
-          <p>Contenido detallado para {{ modalItem.label }}</p>
+          <p>Error en mostrar {{ modalItem.label }}</p>
         </div>
 
         <p class="modal-hint">Presiona espacio para cerrar</p>
@@ -312,7 +341,6 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 }
 
-/* Transición para ocultar los subitems */
 .xmb-subitems.fade-out {
   opacity: 0;
   transition: opacity 0.3s ease-out;
@@ -323,7 +351,6 @@ onUnmounted(() => {
   transition: opacity 0.3s ease-in;
 }
 
-/* Estilos para el preloader */
 .preloader {
   position: absolute;
   top: 0;
@@ -365,12 +392,20 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-.xmb-detail-content h2 {
+.header h2,
+.subicons {
   margin-bottom: 20px;
   font-size: 1.8rem;
-  text-align: center;
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 50%;
+  gap: 20px;
 }
 
 .detail-section {
@@ -380,6 +415,33 @@ onUnmounted(() => {
 
 .detail-section p {
   margin-bottom: 10px;
+}
+
+.education_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.before_and_now {
+  height: 38vh;
+  width: 50%;
+  flex: 1;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.language-details {
+  display: flex;
+  width: 50%;
+  gap: 10px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .modal-hint {
