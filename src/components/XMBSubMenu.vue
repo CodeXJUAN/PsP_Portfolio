@@ -217,26 +217,47 @@ onUnmounted(() => {
         </div>
 
         <div v-else-if="modalItem.label === 'Certifications'" class="detail-section">
-          <div class="certificate-div">
-            <p>
-              In this section here, you can see the certificates I have acquired over the years:
-            </p>
-            <div class="certificatesDiv">
-              <div class="certificates">
-                <div>
-                  <h4>Intermediate Vocational Training</h4>
-                </div>
-                <div>
-                  <p>June of 2024</p>
-                </div>
+          <p class="section-intro">
+            Here are the certificates I have acquired throughout my professional journey:
+          </p>
+          <div class="certificates-container">
+            <div class="certificate-card">
+              <div class="certificate-icon">
+                <Icon class="certicon" icon="mdi:school" />
               </div>
-              <div class="certificates">
-                <div>
-                  <h4>First Certificate in English (B2)</h4>
+              <div class="certificate-content">
+                <h4>Intermediate Vocational Training</h4>
+                <div class="certificate-meta">
+                  <span class="certificate-date">
+                    <Icon icon="mdi:calendar" class="meta-icon" /> June 2024
+                  </span>
+                  <span class="certificate-issuer">
+                    <Icon icon="mdi:building" class="meta-icon" /> Lacetània, Manresa
+                  </span>
                 </div>
-                <div>
-                  <p>June of 2023</p>
+                <p class="certificate-description">
+                  Specialized in Microcomputer Systems and Networks
+                </p>
+              </div>
+            </div>
+
+            <div class="certificate-card">
+              <div class="certificate-icon">
+                <Icon class="certicon" icon="mdi:translate" />
+              </div>
+              <div class="certificate-content">
+                <h4>First Certificate in English</h4>
+                <div class="certificate-meta">
+                  <span class="certificate-date">
+                    <Icon icon="mdi:calendar" class="meta-icon" /> June 2023
+                  </span>
+                  <span class="certificate-issuer">
+                    <Icon icon="mdi:certificate" class="meta-icon" /> Cambridge
+                  </span>
                 </div>
+                <p class="certificate-description">
+                  Official certification of English language proficiency at B2 level
+                </p>
               </div>
             </div>
           </div>
@@ -248,9 +269,51 @@ onUnmounted(() => {
         </div>
 
         <div v-else-if="modalItem.label === 'Skills'" class="detail-section">
-          <p>Frontend: Vue.js, React, HTML5, CSS3</p>
-          <p>Backend: Node.js, Express, Python</p>
-          <p>Bases de datos: MongoDB, MySQL</p>
+          <div class="skills-container">
+            <div class="skill-card">
+              <div class="skill-icon">
+                <Icon class="skillicon" icon="mdi:web" />
+              </div>
+              <div class="skill-content">
+                <h4>Frontend</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">Vue.js</span>
+                  <span class="skill-tag">Astro</span>
+                  <span class="skill-tag">HTML5</span>
+                  <span class="skill-tag">CSS3</span>
+                  <span class="skill-tag">JavaScript</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-icon">
+                <Icon class="skillicon" icon="mdi:server" />
+              </div>
+              <div class="skill-content">
+                <h4>Backend</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">PHP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-icon">
+                <Icon class="skillicon" icon="mdi:database" />
+              </div>
+              <div class="skill-content">
+                <h4>Base de Datos</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">MongoDB</span>
+                  <span class="skill-tag">MySQL</span>
+                  <span class="skill-tag">SQL Server</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
@@ -458,10 +521,6 @@ onUnmounted(() => {
   line-height: 1.6;
 }
 
-.detail-section p {
-  margin-bottom: 10px;
-}
-
 .education_details {
   display: flex;
   justify-content: space-between;
@@ -526,5 +585,177 @@ onUnmounted(() => {
   color: #fff;
   text-align: center;
   opacity: 0.7;
+}
+
+.certicon {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.section-intro {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.certificates-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+}
+
+.certificate-card {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.certificate-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.certificate-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #fff;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.certificate-content {
+  flex: 1;
+}
+
+.certificate-content h4 {
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.certificate-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.certificate-date,
+.certificate-issuer {
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon {
+  margin-right: 5px;
+  font-size: 1.1rem;
+}
+
+.certificate-description {
+  margin: 0;
+  color: #bbb;
+}
+
+@media (max-width: 600px) {
+  .certificates-container {
+    flex-direction: column;
+  }
+
+  .certificate-card {
+    width: 100%;
+  }
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.skill-card {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #fff;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.skillicon {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.skill-content {
+  flex: 1;
+}
+
+.skill-content h4 {
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.skill-tag:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 600px) {
+  .skills-container {
+    flex-direction: column;
+  }
+
+  .skill-card {
+    width: 100%;
+  }
 }
 </style>
