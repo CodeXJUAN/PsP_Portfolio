@@ -264,8 +264,38 @@ onUnmounted(() => {
         </div>
 
         <div v-else-if="modalItem.label === 'Experience'" class="detail-section">
-          <p>Desarrollador Web - Empresa XYZ (2022-Presente)</p>
-          <p>Desarrollador Junior - Startup ABC (2020-2022)</p>
+          <div class="experience-container">
+            <div class="experience-card">
+              <div class="experience-icon">
+                <Icon class="expicon" icon="mdi:briefcase" />
+              </div>
+              <div class="experience-content">
+                <h4>Intership</h4>
+                <div class="experience-meta">
+                  <span class="experience-date">
+                    <Icon icon="mdi:calendar" class="meta-icon" /> November 2023 - June 2024
+                  </span>
+                  <span class="experience-company">
+                    <Icon icon="mdi:building" class="meta-icon" /> AMPANS
+                  </span>
+                  <span class="experience-location">
+                    <Icon icon="mdi:map-marker" class="meta-icon" /> Manresa, Cataluña
+                  </span>
+                </div>
+                <div class="experience-responsibilities">
+                  <h5>Responsabilities:</h5>
+                  <ul>
+                    <li>
+                      Maintenance and preparation of software and hardware for different departments
+                    </li>
+                    <li>Inventory and documentation management using Microsoft Office</li>
+                    <li>Network maintenance and connectivity troubleshooting</li>
+                    <li>Configuration of new equipment and upgrading of existing systems</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Skills'" class="detail-section">
@@ -352,7 +382,7 @@ onUnmounted(() => {
           <p>Error en mostrar {{ modalItem.label }}</p>
         </div>
 
-        <p class="modal-hint">Presiona espacio para cerrar</p>
+        <p class="modal-hint">Press spacebar to exit</p>
       </div>
     </div>
   </Transition>
@@ -756,6 +786,115 @@ onUnmounted(() => {
 
   .skill-card {
     width: 100%;
+  }
+}
+
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.experience-card {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.experience-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.experience-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #fff;
+  margin-right: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  min-width: 50px;
+  height: 50px;
+}
+
+.expicon {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.experience-content {
+  flex: 1;
+}
+
+.experience-content h4 {
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.experience-content h5 {
+  margin: 15px 0 10px 0;
+  color: #eee;
+  font-size: 1.1rem;
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.experience-date,
+.experience-company,
+.experience-location {
+  display: flex;
+  align-items: center;
+}
+
+.experience-description {
+  margin: 0 0 10px 0;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+.experience-responsibilities ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  color: #bbb;
+}
+
+.experience-responsibilities li {
+  margin-bottom: 5px;
+}
+
+.experience-skill-tag:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .experience-card {
+    flex-direction: column;
+  }
+
+  .experience-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .experience-meta {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 </style>
