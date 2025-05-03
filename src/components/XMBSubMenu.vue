@@ -346,36 +346,261 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
-          <p>Aplicación de gestión de inventario</p>
-          <p>Sistema de análisis de datos</p>
+        <div v-else-if="modalItem.label === 'Web Development'" class="detail-section">
+          <div class="projects-container">
+            <h4 class="projects-title">
+              <Icon icon="mdi:web" class="section-icon" /> Mis Proyectos Web
+            </h4>
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="" alt="E-commerce Website" />
+                </div>
+                <div class="project-content">
+                  <h4>Sitio web de comercio electrónico</h4>
+                  <p>
+                    Una plataforma completa de e-commerce con carrito de compras, pasarela de pagos
+                    y panel de administración.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link"> <Icon icon="mdi:web" /> Demo </a>
+                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="" alt="Learning Platform" />
+                </div>
+                <div class="project-content">
+                  <h4>Plataforma de aprendizaje en línea</h4>
+                  <p>
+                    Sistema de gestión de cursos con videos, cuestionarios y seguimiento de progreso
+                    para estudiantes.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">MySQL</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link"> <Icon icon="mdi:web" /> Demo </a>
+                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="" alt="Portfolio Website" />
+                </div>
+                <div class="project-content">
+                  <h4>Portfolio Personal</h4>
+                  <p>
+                    Sitio web personal con diseño inspirado en PlayStation 3 XMB, mostrando mis
+                    habilidades y proyectos.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link"> <Icon icon="mdi:web" /> Demo </a>
+                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div v-else-if="modalItem.label === 'Web Development'" class="detail-section">
-          <p>Sitio web de comercio electrónico</p>
-          <p>Plataforma de aprendizaje en línea</p>
+        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
+          <div class="projects-container">
+            <h4 class="projects-title">
+              <Icon icon="mdi:laptop" class="section-icon" /> Mis Proyectos de Software
+            </h4>
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="" alt="Inventory Management" />
+                </div>
+                <div class="project-content">
+                  <h4>Aplicación de gestión de inventario</h4>
+                  <p>
+                    Sistema completo para gestionar inventario, proveedores, pedidos y generar
+                    informes para pequeñas empresas.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">JavaFX</span>
+                    <span class="tech-tag">MySQL</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
+                    <a href="#" class="project-link">
+                      <Icon icon="mdi:file-document" /> Documentación
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="" alt="Data Analysis System" />
+                </div>
+                <div class="project-content">
+                  <h4>Sistema de análisis de datos</h4>
+                  <p>
+                    Herramienta para procesar, visualizar y analizar grandes conjuntos de datos con
+                    generación de gráficos y reportes.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Matplotlib</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
+                    <a href="#" class="project-link">
+                      <Icon icon="mdi:file-document" /> Documentación
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section">
-          <p>Aplicación de seguimiento de fitness</p>
-          <p>Aplicación de notas y recordatorios</p>
+          <div class="projects-container">
+            <h4 class="projects-title">
+              <Icon icon="mdi:cellphone" class="section-icon" /> Mis Proyectos Móviles
+            </h4>
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="" alt="Fitness Tracking App" />
+                </div>
+                <div class="project-content">
+                  <h4>Aplicación de seguimiento de fitness</h4>
+                  <p>
+                    Aplicación móvil para seguimiento de entrenamientos, nutrición y progreso físico
+                    con estadísticas personalizadas.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Dart</span>
+                    <span class="tech-tag">Firebase</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link">
+                      <Icon icon="mdi:google-play" /> Play Store
+                    </a>
+                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Profile'" class="detail-section">
-          <p>Soy un desarrollador apasionado por crear soluciones tecnológicas innovadoras.</p>
-          <p>Me encanta aprender nuevas tecnologías y enfrentar desafíos complejos.</p>
+          <div class="profile-container">
+            <div class="profile-card">
+              <div class="profile-icon">
+                <Icon class="proficon" icon="mdi:account" />
+              </div>
+              <div class="profile-content">
+                <h4>About me</h4>
+                <div class="profile-description">
+                  <p>
+                    Me llamo Juan, y estoy estudiando un grado superior en Desarollo de Aplicaciones
+                    Multiplataforma en Vic.
+                  </p>
+                  <p>
+                    Me encanta tanto el desarrollo web como expandir mis conocimientos en el
+                    desarrollo de aplicaciones mobiles o otros campos que esten relacionados entre
+                    sí.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Interests'" class="detail-section">
-          <p>Desarrollo de videojuegos</p>
-          <p>Inteligencia artificial</p>
-          <p>Música y producción de audio</p>
+          <div class="interests-container">
+            <h4 class="interests-title">
+              This are my hobbies and things i like the most when I'am not coding:
+            </h4>
+            <div class="interests-grid">
+              <div class="interest-item">
+                <Icon icon="mdi:web" class="interest-icon" />
+                <span>Web Development</span>
+              </div>
+              <div class="interest-item">
+                <Icon icon="mdi:cellphone" class="interest-icon" />
+                <span>Mobile Development</span>
+              </div>
+              <div class="interest-item">
+                <Icon icon="mdi:music" class="interest-icon" />
+                <span>Music</span>
+              </div>
+              <div class="interest-item">
+                <Icon icon="mdi:soccer" class="interest-icon" />
+                <span>Football</span>
+              </div>
+              <div class="interest-item">
+                <Icon icon="carbon:running" class="interest-icon" />
+                <span>Running</span>
+              </div>
+              <div class="interest-item">
+                <Icon icon="ri:sun-fill" class="interest-icon" />
+                <span>Sunbathing</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else-if="modalItem.label === 'Goals'" class="detail-section">
-          <p>Convertirme en un desarrollador full-stack senior</p>
-          <p>Contribuir a proyectos de código abierto</p>
-          <p>Crear mi propia startup tecnológica</p>
+          <div class="goals-container">
+            <h4 class="goals-title">
+              <Icon icon="mdi:flag" class="section-icon" />This are my future goals:
+            </h4>
+            <div class="goals-list">
+              <div class="goal-item">
+                <div class="goal-icon">
+                  <Icon icon="mdi:code-braces" />
+                </div>
+                <div class="goal-content">
+                  <p>To be a Full-Stack Developer who works abroad</p>
+                </div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-icon">
+                  <Icon icon="mdi:handshake" />
+                </div>
+                <div class="goal-content">
+                  <p>Collaborate on famous project, startup or enterprises</p>
+                </div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-icon">
+                  <Icon icon="mdi:rocket-launch" />
+                </div>
+                <div class="goal-content">
+                  <p>In a future create mi own startup</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div v-else class="detail-section">
@@ -501,7 +726,6 @@ onUnmounted(() => {
   }
 }
 
-/* Transiciones para el modal */
 .fade-enter-active {
   transition: opacity 0.8s ease-in;
 }
@@ -895,6 +1119,306 @@ onUnmounted(() => {
   .experience-meta {
     flex-direction: column;
     gap: 8px;
+  }
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.profile-card {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #fff;
+  margin-right: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  min-width: 50px;
+  height: 50px;
+}
+
+.proficon {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.profile-content {
+  flex: 1;
+}
+
+.profile-content h4 {
+  margin: 0 0 15px 0;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.profile-description p {
+  margin: 0 0 10px 0;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+/* Estilos para la sección de Intereses */
+.interests-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.interests-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.interests-title {
+  display: flex;
+  align-items: center;
+  margin: 0 0 20px 0;
+  color: #fff;
+}
+
+.section-icon {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.interest-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.interest-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.interest-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #fff;
+}
+
+/* Estilos para la sección de Metas */
+.goals-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.goals-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.goals-title {
+  display: flex;
+  align-items: center;
+  margin: 0 0 20px 0;
+  color: #fff;
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.goal-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.goal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  min-width: 40px;
+  height: 40px;
+}
+
+.goal-content {
+  flex: 1;
+}
+
+.goal-content p {
+  margin: 0;
+  color: #bbb;
+}
+
+@media (max-width: 600px) {
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projects-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.projects-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.projects-title {
+  display: flex;
+  align-items: center;
+  margin: 0 0 20px 0;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+  height: 160px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 15px;
+}
+
+.project-content h4 {
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.project-content p {
+  margin: 0 0 15px 0;
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tech-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 10px;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
