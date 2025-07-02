@@ -347,169 +347,61 @@ onUnmounted(() => {
         </div>
 
         <div v-else-if="modalItem.label === 'Web Development'" class="detail-section">
-          <div class="projects-container">
-            <h4 class="projects-title">
-              <Icon icon="mdi:web" class="section-icon" /> Mis Proyectos Web
-            </h4>
-            <div class="projects-grid">
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="" alt="E-commerce Website" />
-                </div>
-                <div class="project-content">
-                  <h4>Sitio web de comercio electrónico</h4>
-                  <p>
-                    Una plataforma completa de e-commerce con carrito de compras, pasarela de pagos
-                    y panel de administración.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag">Vue.js</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">MongoDB</span>
-                  </div>
-                  <div class="project-links">
-                    <a href="#" class="project-link"> <Icon icon="mdi:web" /> Demo </a>
-                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
-                  </div>
-                </div>
+          <div class="webproj-intro">
+            <h4>This are, at the moment, the web development project that I have done:</h4>
+          </div>
+          <div class="webproj-container">
+            <div class="web-project-card">
+              <h2>E-Commerce + Crypto</h2>
+              <p>
+                This is a fictional e-commerce website with a crypto api implementation, that allows
+                the costumer to see the crypto prices.
+              </p>
+              <div class="web-project-links">
+                <a href="https://github.com/CodeXJUAN/portfolio" target="_blank">
+                  <Icon icon="mdi:github" /> GitHub
+                </a>
+                <a href="https://juanportfolio.dev" target="_blank">
+                  <Icon icon="mdi:web" /> Página
+                </a>
               </div>
-
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="" alt="Learning Platform" />
-                </div>
-                <div class="project-content">
-                  <h4>Plataforma de aprendizaje en línea</h4>
-                  <p>
-                    Sistema de gestión de cursos con videos, cuestionarios y seguimiento de progreso
-                    para estudiantes.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Express</span>
-                    <span class="tech-tag">MySQL</span>
-                  </div>
-                  <div class="project-links">
-                    <a href="#" class="project-link"> <Icon icon="mdi:web" /> Demo </a>
-                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
-                  </div>
-                </div>
+            </div>
+            <div class="web-project-card">
+              <h2>To-Do List</h2>
+              <p>
+                This is a simple to-do list web application that allows the user to create, edit,
+                delete and mark as completed tasks.
+              </p>
+              <div class="web-project-links">
+                <a href="https://github.com/CodeXJUAN/task-manager" target="_blank">
+                  <Icon icon="mdi:github" /> GitHub
+                </a>
+                <a href="https://tasks.juanportfolio.dev" target="_blank">
+                  <Icon icon="mdi:web" /> Página
+                </a>
               </div>
-
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="" alt="Portfolio Website" />
-                </div>
-                <div class="project-content">
-                  <h4>Portfolio Personal</h4>
-                  <p>
-                    Sitio web personal con diseño inspirado en PlayStation 3 XMB, mostrando mis
-                    habilidades y proyectos.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag">Vue.js</span>
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">JavaScript</span>
-                  </div>
-                  <div class="project-links">
-                    <a href="#" class="project-link"> <Icon icon="mdi:web" /> Demo </a>
-                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
-                  </div>
-                </div>
+            </div>
+            <div class="web-project-card">
+              <h2>Music Managment Web</h2>
+              <p>
+                This is a music managment web application, the page allows the user to add, delete,
+                mark as favourit or completed music.
+              </p>
+              <div class="web-project-links">
+                <a href="https://github.com/CodeXJUAN/tech-blog" target="_blank">
+                  <Icon icon="mdi:github" /> GitHub
+                </a>
+                <a href="https://blog.juanportfolio.dev" target="_blank">
+                  <Icon icon="mdi:web" /> Página
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
-          <div class="projects-container">
-            <h4 class="projects-title">
-              <Icon icon="mdi:laptop" class="section-icon" /> Mis Proyectos de Software
-            </h4>
-            <div class="projects-grid">
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="" alt="Inventory Management" />
-                </div>
-                <div class="project-content">
-                  <h4>Aplicación de gestión de inventario</h4>
-                  <p>
-                    Sistema completo para gestionar inventario, proveedores, pedidos y generar
-                    informes para pequeñas empresas.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">JavaFX</span>
-                    <span class="tech-tag">MySQL</span>
-                  </div>
-                  <div class="project-links">
-                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
-                    <a href="#" class="project-link">
-                      <Icon icon="mdi:file-document" /> Documentación
-                    </a>
-                  </div>
-                </div>
-              </div>
+        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section"></div>
 
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="" alt="Data Analysis System" />
-                </div>
-                <div class="project-content">
-                  <h4>Sistema de análisis de datos</h4>
-                  <p>
-                    Herramienta para procesar, visualizar y analizar grandes conjuntos de datos con
-                    generación de gráficos y reportes.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Matplotlib</span>
-                  </div>
-                  <div class="project-links">
-                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
-                    <a href="#" class="project-link">
-                      <Icon icon="mdi:file-document" /> Documentación
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section">
-          <div class="projects-container">
-            <h4 class="projects-title">
-              <Icon icon="mdi:cellphone" class="section-icon" /> Mis Proyectos Móviles
-            </h4>
-            <div class="projects-grid">
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="" alt="Fitness Tracking App" />
-                </div>
-                <div class="project-content">
-                  <h4>Aplicación de seguimiento de fitness</h4>
-                  <p>
-                    Aplicación móvil para seguimiento de entrenamientos, nutrición y progreso físico
-                    con estadísticas personalizadas.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag">Flutter</span>
-                    <span class="tech-tag">Dart</span>
-                    <span class="tech-tag">Firebase</span>
-                  </div>
-                  <div class="project-links">
-                    <a href="#" class="project-link">
-                      <Icon icon="mdi:google-play" /> Play Store
-                    </a>
-                    <a href="#" class="project-link"> <Icon icon="mdi:github" /> GitHub </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section"></div>
 
         <div v-else-if="modalItem.label === 'Profile'" class="detail-section">
           <div class="profile-container">
@@ -521,13 +413,10 @@ onUnmounted(() => {
                 <h4>About me</h4>
                 <div class="profile-description">
                   <p>
-                    Me llamo Juan, y estoy estudiando un grado superior en Desarollo de Aplicaciones
-                    Multiplataforma en Vic.
+                    My name is Juan, and I am studying for a Higher Vocational Training in Application Development Multiplatform in Vic.
                   </p>
                   <p>
-                    Me encanta tanto el desarrollo web como expandir mis conocimientos en el
-                    desarrollo de aplicaciones mobiles o otros campos que esten relacionados entre
-                    sí.
+                    Until now I got into programming because I liked web development, but the more time passes, the more I like web, mobile and software development.
                   </p>
                 </div>
               </div>
@@ -623,6 +512,7 @@ onUnmounted(() => {
   justify-content: center;
   width: 40%;
 }
+
 .xmb-subitems-list {
   display: flex;
   flex-direction: column;
@@ -752,11 +642,11 @@ onUnmounted(() => {
 .subicons {
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  margin: 0;
 }
 
 .header h2 {
   font-size: 1.3rem;
-  margin: 0;
 }
 
 .subicons {
@@ -767,9 +657,6 @@ onUnmounted(() => {
   margin-bottom: 2vh;
 }
 
-.header h2 {
-  margin: 0;
-}
 .detail-section {
   margin-bottom: 20px;
   line-height: 1.6;
@@ -1179,7 +1066,6 @@ onUnmounted(() => {
   line-height: 1.5;
 }
 
-/* Estilos para la sección de Intereses */
 .interests-container {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -1232,7 +1118,6 @@ onUnmounted(() => {
   color: #fff;
 }
 
-/* Estilos para la sección de Metas */
 .goals-container {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -1302,123 +1187,64 @@ onUnmounted(() => {
   }
 }
 
-.projects-container {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 20px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.projects-container:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.projects-title {
+.webproj-container {
   display: flex;
-  align-items: center;
-  margin: 0 0 20px 0;
-  color: #fff;
-  font-size: 1.3rem;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 20px;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.project-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.project-image {
-  height: 160px;
-  overflow: hidden;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-
-.project-content {
-  padding: 15px;
-}
-
-.project-content h4 {
-  margin: 0 0 10px 0;
-  color: #fff;
-  font-size: 1.1rem;
-}
-
-.project-content p {
-  margin: 0 0 15px 0;
-  color: #bbb;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.project-tech {
+.web-project-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  padding: 10px 18px;
+  flex: 1 1 0;
+  min-width: 250px;
+  max-width: 420px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
-.tech-tag {
-  background-color: rgba(255, 255, 255, 0.1);
+.web-project-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.web-project-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.web-project-card p {
+  font-size: 1rem;
   color: #ddd;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  margin-bottom: 14px;
 }
 
-.project-links {
+.web-project-links {
   display: flex;
-  gap: 10px;
+  gap: 14px;
 }
 
-.project-link {
+.web-project-links a {
+  color: #90caf9;
+  text-decoration: none;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.web-project-links a:hover {
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
-}
-
-.project-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+  text-decoration: underline;
 }
 </style>
