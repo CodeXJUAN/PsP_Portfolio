@@ -13,13 +13,7 @@ A personal portfolio project inspired by the PlayStation Portable (PSP) interfac
 
 ## Demo
 
-![PSP Portfolio Screenshot](public/images/aside_example.png)
-
-## Getting Started
-
-### Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (disable Vetur)
+![PSP Portfolio Screenshot](public/images/DEMO_PAGE.png)
 
 ### Project Setup
 
