@@ -22,7 +22,6 @@ export const menuItems = [
     items: [
       { icon: 'mdi:terminal', label: 'Software Development' },
       { icon: 'mdi:web', label: 'Web Development' },
-      { icon: 'mynaui:mobile', label: 'Mobile Apps' },
     ],
   },
   {

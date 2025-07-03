@@ -358,12 +358,10 @@ onUnmounted(() => {
                 the costumer to see the crypto prices.
               </p>
               <div class="web-project-links">
-                <a href="https://github.com/CodeXJUAN/portfolio" target="_blank">
+                <a href="https://github.com/CodeXJUAN/jwear-web-crypto_api" target="_blank">
                   <Icon icon="mdi:github" /> GitHub
                 </a>
-                <a href="https://juanportfolio.dev" target="_blank">
-                  <Icon icon="mdi:web" /> Página
-                </a>
+                <a href="" target="_blank"> <Icon icon="mdi:web" /> Página </a>
               </div>
             </div>
             <div class="web-project-card">
@@ -373,12 +371,10 @@ onUnmounted(() => {
                 delete and mark as completed tasks.
               </p>
               <div class="web-project-links">
-                <a href="https://github.com/CodeXJUAN/task-manager" target="_blank">
+                <a href="https://github.com/CodeXJUAN/TO-DO-LIST" target="_blank">
                   <Icon icon="mdi:github" /> GitHub
                 </a>
-                <a href="https://tasks.juanportfolio.dev" target="_blank">
-                  <Icon icon="mdi:web" /> Página
-                </a>
+                <a href="" target="_blank"> <Icon icon="mdi:web" /> Página </a>
               </div>
             </div>
             <div class="web-project-card">
@@ -388,20 +384,46 @@ onUnmounted(() => {
                 mark as favourit or completed music.
               </p>
               <div class="web-project-links">
-                <a href="https://github.com/CodeXJUAN/tech-blog" target="_blank">
+                <a href="https://github.com/CodeXJUAN/Music-Managment-Web" target="_blank">
                   <Icon icon="mdi:github" /> GitHub
                 </a>
-                <a href="https://blog.juanportfolio.dev" target="_blank">
-                  <Icon icon="mdi:web" /> Página
-                </a>
+                <a href="" target="_blank"> <Icon icon="mdi:web" /> Página </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section"></div>
-
-        <div v-else-if="modalItem.label === 'Mobile Apps'" class="detail-section"></div>
+        <div v-else-if="modalItem.label === 'Software Development'" class="detail-section">
+          <div class="webproj-intro">
+            <h4>These are the software projects I've done so far:</h4>
+          </div>
+          <div class="webproj-container">
+            <div class="web-project-card">
+              <h2>miruvic</h2>
+              <p>
+                This is a terminal app made with java, gradle and kotlin that is based on a
+                university residence and simulates the booking system.
+              </p>
+              <div class="web-project-links">
+                <a href="https://github.com/CodeXJUAN/miruvic" target="_blank">
+                  <Icon icon="mdi:github" /> GitHub
+                </a>
+              </div>
+            </div>
+            <div class="web-project-card">
+              <h2>Calculator</h2>
+              <p>
+                This is a WPF app made with C# and XAML, which basically is a calculator that allows
+                you to do simple operations.
+              </p>
+              <div class="web-project-links">
+                <a href="https://github.com/CodeXJUAN/PAC4_Calculadora" target="_blank">
+                  <Icon icon="mdi:github" /> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div v-else-if="modalItem.label === 'Profile'" class="detail-section">
           <div class="profile-container">
@@ -413,10 +435,12 @@ onUnmounted(() => {
                 <h4>About me</h4>
                 <div class="profile-description">
                   <p>
-                    My name is Juan, and I am studying for a Higher Vocational Training in Application Development Multiplatform in Vic.
+                    My name is Juan, and I am studying for a Higher Vocational Training in
+                    Application Development Multiplatform in Vic.
                   </p>
                   <p>
-                    Until now I got into programming because I liked web development, but the more time passes, the more I like web, mobile and software development.
+                    Until now I got into programming because I liked web development, but the more
+                    time passes, the more I like web, mobile and software development.
                   </p>
                 </div>
               </div>
